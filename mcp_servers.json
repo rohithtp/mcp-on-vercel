@@ -1,0 +1,9 @@
+{
+    "capabilities": {
+        "tools": {
+            "echo": {
+                "description": "Echo a message"
+            }
+        }
+    }
+}
