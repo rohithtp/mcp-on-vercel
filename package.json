@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@7.0.0",
+  "packageManager": "pnpm@8.15.7",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
     "content-type": "^1.0.5",
