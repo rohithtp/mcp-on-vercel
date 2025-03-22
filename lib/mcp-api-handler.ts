@@ -245,35 +245,28 @@ function createFakeIncomingMessage(
     socket = new Socket(),
   } = options;
 
-  // Create a readable stream that will be used as the base for IncomingMessage
+  // Create a readable stream
   const readable = new Readable();
   readable._read = (): void => {}; // Required implementation
 
-  // Add the body content if provided
-  if (body) {
-    if (typeof body === "string") {
-      readable.push(body);
-    } else if (Buffer.isBuffer(body)) {
-      readable.push(body);
-    } else {
-      readable.push(JSON.stringify(body));
-    }
-    readable.push(null); // Signal the end of the stream
-  }
-
-  // Create the IncomingMessage instance
-  const req = new IncomingMessage(socket);
+  // Create an IncomingMessage instance
+  const req = Object.create(IncomingMessage.prototype) as IncomingMessage;
+  Object.assign(req, readable);
 
   // Set the properties
   req.method = method;
   req.url = url;
   req.headers = headers;
+  req.socket = socket;
 
-  // Copy over the stream methods
-  req.push = readable.push.bind(readable);
-  req.read = readable.read.bind(readable);
-  req.on = readable.on.bind(readable);
-  req.pipe = readable.pipe.bind(readable);
+  // Push the body if it exists
+  if (body) {
+    const bodyStr = typeof body === 'string' ? body : JSON.stringify(body);
+    readable.push(bodyStr);
+    readable.push(null);
+  } else {
+    readable.push(null);
+  }
 
   return req;
 }
