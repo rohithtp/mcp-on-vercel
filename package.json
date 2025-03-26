@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node dist/api/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-client": "node scripts/test-client.mjs https://mcp-on-vercel.vercel.app"
+    "test-client": "node scripts/test-client.mjs http://localhost:3000"
   },
   "keywords": [],
   "author": "",
