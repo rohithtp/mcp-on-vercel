@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@10.7.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.8.0",
     "content-type": "^1.0.5",
@@ -23,7 +23,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@types/node": "^22.13.13",
+    "@types/node": "22.13.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }
